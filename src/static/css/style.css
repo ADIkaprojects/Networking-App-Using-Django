@@ -1,0 +1,178 @@
+body {
+    background-color: #e7e7ef !important;
+    opacity: 1 !important ;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e7e7ef 10px ), repeating-linear-gradient( #d1d2e955, #d1d2e9 ) !important;
+    background-attachment: fixed !important;
+}
+
+
+.nav {
+    border-radius: 10px !important;
+    margin-top: 20px;
+    padding: 10px 0 10px 0 !important;
+    background-color: #182a5d !important; 
+}
+
+.mb-7 {
+    margin-bottom: 25px !important;
+}
+
+.mt-5 {
+    margin-top: 5px !important;
+}
+
+.mymodal {
+    height: 300px !important;
+    top: 200px !important;
+    font-size: 20px !important;
+}
+
+.mb-5 {
+    margin-bottom: 5px !important;
+}
+
+.w-big {
+    width: 200px !important;
+}
+
+.bwhite-lg {
+    background-color: transparent !important;
+}
+
+.bwhite-sm {
+    background-color: transparent !important;
+    width: 10px !important;
+}
+
+.comment-box {
+    display: none;
+}
+
+.shadow-wrap{
+    border-radius: 5px;
+    padding: 25px;
+    background-color:#F0F2FB;
+   }
+   .form-wrap{
+    background-color: #fff;
+   padding: 70px;
+   }
+   .form-wrap form *{
+    display: block;
+    width: 100%;
+   }
+   .form-wrap form label{
+   margin-bottom: 5px;
+   font-size: 14px;
+   font-weight: 700;
+   line-height: 26px; 
+   }
+   .form-wrap form input{
+   padding: 12px 20px;
+   border-radius: 5px;
+   border: 1px solid #DAE1F5;
+   background: #FFF; 
+   color: #545D7A; 
+   }
+   #id_username{
+    margin-bottom: 20px;
+   }
+   .form-wrap button{
+    border-radius: 5px;
+   background: #10182F;
+   color: #FFF;
+   cursor: pointer;
+   text-align: center;
+   font-size: 16px;
+   padding: 12px 68px;
+   font-weight: 700;
+   border: 1px solid transparent;
+   margin-top: 30px;
+   line-height: 26px; 
+   }
+   .signup-link{
+    color: #10182F;
+    font-size: 15px;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 25px;
+    display: block;
+   text-decoration: none;
+   }
+   .signup-link:hover{
+    text-decoration: underline;
+   }
+   .form-wrap button:hover{
+    background-color: #fff;
+    color: #10182F;
+    border-color: #10182F;
+   
+   }
+
+#id_remember{
+    position: relative;
+    top: -24px;
+    left: 8px;
+}
+
+.row{
+    box-shadow: 5px 5px 30px 0px;
+    padding: 20px;
+}
+
+.ui.grid{
+    padding: 8px !important;
+}
+
+.ui.teal.button{
+    background-color: #00b5ad00 !important;
+}
+
+#myUL {
+    /* Remove default list styling */
+    list-style-type: none;
+    padding: 0px;
+    margin: 10px;
+  }
+  
+  #myUL li a {
+    border: 1px solid #ddd; /* Add a border to all links */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: black; /* Add a black text color */
+    display: block; /* Make it into a block element to fill the whole list */
+  }
+  
+  #myUL li a:hover:not(.header) {
+    background-color: #eee; /* Add a hover effect to all links, except for headers */
+  }
+
+.button, input{
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.ui.grid>.column:not(.row), .ui.grid>.row>.column{
+    box-shadow: 20px 20px 20px -26px;
+}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load allauth account %}
+{% block head_title %}
+    {% trans "Sign In" %}
+{% endblock head_title %}
+{% block content %}
+    <div style="display: flex; justify-content: center;" >
+    <div style="margin: 2rem;">
+    {% element h1 %}
+        {% trans "Sign In" %}
+    {% endelement %}
+    <p>
+        {% blocktrans %}If you have not created an account yet, then please
+    <a href="{{ signup_url }}">Login</a> first.{% endblocktrans %}
+    </p>
+
+    <div class="shadow-wrap">
+        <div class="form-wrap">
+        {% url 'account_login' as login_url %}
+        {% element form form=form method="post" action=login_url tags="entrance,login" %}
+        {% slot body %}
+            {% csrf_token %}
+            {% element fields form=form unlabeled=True %}
+            {% endelement %}
+            {% if redirect_field_value %}
+                <input type="hidden"
+                       name="{{ redirect_field_name }}"
+                       value="{{ redirect_field_value }}" />
+            {% endif %}
+            {% endslot %}
+            {% slot actions %}
+            <button class="ui button primary">
+            {% trans "Sign In" %}
+            {% endslot %}
+            {% endelement %}
+            </button>
+            {% if SOCIALACCOUNT_ENABLED %}
+            {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock content %}

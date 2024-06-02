@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--Custom css-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <!-- semantic UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+    <style>
+      /* Styles for the stock data cards */
+      
+
+      .company {
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          margin-bottom: 20px;
+          background-color: #fff;
+          max-width: 100rem;
+      }
+
+      .company img {
+          display: block;
+          margin: 0 auto 10px;
+          border-radius: 50%;
+      }
+
+      .company h2 {
+          font-size: 20px;
+          margin-bottom: 10px;
+          text-align: center;
+      }
+
+      .company p {
+          font-size: 16px;
+          margin-bottom: 8px;
+      }
+
+      .company .info-label {
+          font-weight: bold;
+      }
+  </style>
+
+  
+    <title> LOOKout - {% block title %}{% endblock title %}</title>
+  </head>
+  <body>
+    {% include 'main/navbar.html' %}
+    <div class=" ui container">
+      {% block content %}
+      {% endblock content %}
+    </div>
+
+    {% block scripts %}
+    {% endblock scripts %}
+   
+   <!--Custom js ADD-->
+   <script src="{% static 'js/main.js' %}" ></script>
+
+  </body>
+</html>

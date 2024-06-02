@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+View Profiles
+{% endblock title %}
+
+{% block content %}
+
+<div class="item">
+    <form action="" method="GET">
+      <div class="ui action left icon input">
+      <input class="prompt" type="text" name='q' placeholder="name of a friend..." id="myInput" onkeyup="myFunction()">
+      <i class="search icon"></i>
+      <button type='submit' class="ui button">Search</button>
+      </div>
+  </form>
+  </div>
+
+    <ul id="myUL" style="width: 30rem;">
+        {% for item in qs %}
+            <li><a href="{{item.get_absolute_url}}">{{item.user}}</a></li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        function myFunction() {
+          // Declare variables
+          var input, filter, ul, li, a, i, txtValue;
+          input = document.getElementById('myInput');
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myUL");
+          li = ul.getElementsByTagName('li');
+        
+          // Loop through all list items, and hide those who don't match the search query
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+        </script>
+{% endblock content %}

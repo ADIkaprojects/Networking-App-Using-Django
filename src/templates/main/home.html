@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}
+home
+{% endblock title %}
+
+{% block content %}
+<p >
+    <b>
+Hello - &nscr; - Welcome {{user}},
+</b>
+</p>
+<h1>Stock Market Data</h1>
+<div id="stockData"></div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    // Your Polygon.io API key
+    const apiKey = '1eLTsTnV48K6invlrMV1Qop4iS8U__Xp';
+
+    // List of companies with their symbols and names
+    const companies = [
+        { symbol: 'AAPL', name: 'Apple Inc.' },
+        { symbol: 'AMZN', name: 'Amazon.com Inc.' },
+        { symbol: 'TSLA', name: 'Tesla, Inc.' },
+        { symbol: 'NVDA', name: 'NVIDIA Corporation' },
+        { symbol: 'NFLX', name: 'Netflix, Inc.' },
+    ];
+
+    // Function to fetch stock data for a given company
+    async function fetchStockData(symbol) {
+        try {
+            const response = await fetch(`https://api.polygon.io/v1/meta/symbols/${symbol}/company?apiKey=${apiKey}`);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(`Error fetching stock data for ${symbol}:`, error);
+            return null;
+        }
+    }
+
+    // Function to display stock data for all companies on the webpage
+    async function displayStockData() {
+        const stockDataDiv = document.getElementById('stockData');
+
+        for (const company of companies) {
+            const stockData = await fetchStockData(company.symbol);
+
+            if (stockData) {
+                const companyDiv = document.createElement('div');
+                companyDiv.classList.add('company');
+
+                const symbolImg = document.createElement('img');
+                symbolImg.src = `https://storage.googleapis.com/iexcloud-hl37opg/api/logos/${company.symbol}.png`;
+                symbolImg.alt = `${company.symbol} logo`;
+                symbolImg.width = 50;
+                symbolImg.height = 50;
+                companyDiv.appendChild(symbolImg);
+
+                const companyNameHeading = document.createElement('h2');
+                companyNameHeading.textContent = company.name;
+                companyDiv.appendChild(companyNameHeading);
+
+                const symbolParagraph = document.createElement('p');
+                symbolParagraph.innerHTML = `<span class="info-label">Symbol:</span> ${stockData.symbol}`;
+                companyDiv.appendChild(symbolParagraph);
+
+                const sectorParagraph = document.createElement('p');
+                sectorParagraph.innerHTML = `<span class="info-label">Sector:</span> ${stockData.sector}`;
+                companyDiv.appendChild(sectorParagraph);
+
+                const industryParagraph = document.createElement('p');
+                industryParagraph.innerHTML = `<span class="info-label">Industry:</span> ${stockData.industry}`;
+                companyDiv.appendChild(industryParagraph);
+
+                const descriptionParagraph = document.createElement('p');
+                descriptionParagraph.innerHTML = `<span class="info-label">Description:</span> ${stockData.description}`;
+                companyDiv.appendChild(descriptionParagraph);
+
+                const websiteParagraph = document.createElement('p');
+                websiteParagraph.innerHTML = `<span class="info-label">Website:</span> <a href="${stockData.website}" target="_blank">${stockData.website}</a>`;
+                companyDiv.appendChild(websiteParagraph);
+
+                const ceoParagraph = document.createElement('p');
+                ceoParagraph.innerHTML = `<span class="info-label">CEO:</span> ${stockData.ceo}`;
+                companyDiv.appendChild(ceoParagraph);
+
+                const marketCapParagraph = document.createElement('p');
+                marketCapParagraph.innerHTML = `<span class="info-label">Market Cap:</span> ${stockData.marketcap}`;
+                companyDiv.appendChild(marketCapParagraph);
+
+                const headquartersParagraph = document.createElement('p');
+                headquartersParagraph.innerHTML = `<span class="info-label">Headquarters:</span> ${stockData.hq_address}, ${stockData.hq_city}, ${stockData.hq_state}, ${stockData.hq_country}`;
+                companyDiv.appendChild(headquartersParagraph);
+
+                stockDataDiv.appendChild(companyDiv);
+            } else {
+                stockDataDiv.textContent = 'Failed to fetch stock data.';
+            }
+        }
+    }
+
+    // Call the function to display stock data when the page loads
+    displayStockData();
+</script>
+{% endblock scripts %}
